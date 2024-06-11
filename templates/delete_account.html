@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete Account
+{% endblock %}
+
+{% block main %}
+    <form action="/delete_account" method="post">
+        <div class="mb-3">
+            <p>If you wish to delete your account please enter and confirm your password.</p>
+            <p><b>Caution! </b>Once deleted this can't be undone.</p>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <button class="btn btn-danger" type="submit">Delete Account</button>
+    </form>
+    <form action="/">
+        <button class="btn btn-secondary mt-3" type="submit">Cancel</button>
+    </form>
+{% endblock %}

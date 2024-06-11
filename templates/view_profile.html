@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% for row in username %}
+
+        {{ row["username"] }}
+
+    {% endfor %}
+{% endblock %}
+
+{% block main %}
+<h1> My Profile</h1>
+    <form action="/edit_profile">
+        <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Edit</button>
+        </div>
+    </form>
+        <object data="static/images/{{ picture }}" class="rounded-circle" width="300" height="300">
+            <img src="static/images/default_profile.jpg" class="rounded-circle" alt="Profile picture" width="300" height="300">
+        </object>
+
+    {% for row in username %}
+
+        <h2>
+            Username: {{ row["username"] }}
+        </h2>
+
+    {% endfor %}
+
+    {% for row in database %}
+
+        <p>Name: {{ row["name"] }}</p>
+        <p>Email: {{ row["email"] }}</p>
+        <p>Bio:</p>
+        <p>{{ row["bio"] }}</p>
+
+    {% endfor %}
+{% endblock %}

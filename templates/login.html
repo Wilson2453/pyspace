@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+
+    <img src="static/images/Python-logo.png" class="rounded-circle" alt="pyspace" width="275" height="275">
+    <div class="header">
+        <span class="blue" style="font-family: 'Flux-Regular', Sans-serif;">p</span><span class="yellow" style="font-family: 'Flux-Regular', Sans-serif;">y</span><span class="white" style="font-family: 'Flux-Regular', Sans-serif;" >space</span>
+    </div>
+
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+{% endblock %}

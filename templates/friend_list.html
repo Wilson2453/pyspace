@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Friends
+{% endblock %}
+
+{% block main %}
+    <h1>Find Friends</h1>
+    <form action="/search_profile" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="search" placeholder="Please enter someone's username" type="text" size="28" maxlength="15">
+        </div>
+        <button class="btn btn-primary" type="submit">Find</button>
+    </form>
+
+    <h1 style="text-align:left">My friends</h1>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Avatar</th>
+            <th scope="col">Username</th>
+            <th scope="col">ID</th>
+            <th scope="col">Profile</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in friends_database %}
+                <tr>
+                    <td>
+                        <object data="static/images/{{ row['picture'] }}" class="rounded-circle" width="50" height="50">
+                            <img src="static/images/default_profile.jpg" class="rounded-circle" alt="Profile picture" width="50" height="50">
+                        </object>
+                    </td>
+                    <td>{{ row["username"] }}</td>
+                    <td>{{ row["id"] }}</td>
+                    <td>
+                        <form action='/view_friend_profile/{{ row["id"] }}' method="get">
+                            <button class="btn btn-primary" type="submit">View profile</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1 style="text-align:left">Other users</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Avatar</th>
+                <th scope="col">Username</th>
+                <th scope="col">ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in other_database %}
+                <tr>
+                    <td>
+                        <object data="static/images/{{ row['picture'] }}" class="rounded-circle" width="50" height="50">
+                            <img src="static/images/default_profile.jpg" class="rounded-circle" alt="Profile picture" width="50" height="50">
+                        </object>
+                    </td>
+                    <td>{{ row["username"] }}</td>
+                    <td>{{ row["id"] }}</td>
+                    <td>
+                        <form action='/view_other_profile/{{ row["id"] }}' method="get">
+                            <button class="btn btn-primary" type="submit">View profile</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

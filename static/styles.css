@@ -1,0 +1,63 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #4b8bbe;
+}
+
+nav .navbar-brand .yellow
+{
+    color: #ffd43b;
+}
+
+nav .navbar-brand .white
+{
+    color: #dddddd;
+}
+
+body {
+    background: linear-gradient(to bottom, lightsteelblue 0%, steelblue 100%);
+    min-height: 100vh;
+  }
+
+.card {
+    width:800px;
+    margin:0 auto;
+    background: linear-gradient(to bottom, lightsteelblue 0%, steelblue 100%);
+    background-color: dark;
+}
+
+.py{
+    font-family: 'Flux-Regular', Sans-serif;
+}
+
+.header{
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 52px;
+}
+
+.register{
+    padding: 20px;
+}
+
+.blue
+{
+    color: #306998;
+}
+
+.yellow
+{
+    color: #ffd43b;
+}
+
+.white
+{
+    color: #dddddd;
+}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Posts
+{% endblock %}
+
+{% block main %}
+<h1 style="padding-bottom: 20px;">My Posts</h1>
+
+<form action="/post" method="post">
+  <div class="mb-3">
+      <textarea autocomplete="off" autofocus class="form-control mx-auto w-auto" name="post" placeholder="What would you like to post?" cols="70" rows="3"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit">Post</button>
+</form>
+
+<div style="width:800px; margin:0 auto;">
+  <div class="p-3">
+    <div class="d-flex p-3 border-bottom"></div>
+
+    {% for row in database %}
+
+      <div class="d-flex p-3 border-bottom">
+        <a href="/index_profile_link/{{ id }}">
+          <object data="static/images/{{ picture }}" class="rounded-circle" width="50" height="50">
+            <img src="static/images/default_profile.jpg" class="rounded-circle" alt="Profile picture" width="50" height="50">
+          </object>
+        </a>
+        <div class="d-flex w-100 ps-3">
+          <div style="text-align: justify">
+            <a href="/index_profile_link/{{ id }}">
+              <h6 class="text-body">
+                {{ username }}
+                <span class="small text-muted font-weight-normal"> • </span>
+                <span class="small text-muted font-weight-normal">{{ row["date"] }}</span>
+                <span><i class="fas fa-angle-down float-end"></i></span>
+              </h6>
+            </a>
+            <p style="line-height: 1.2; max-width: 675px; word-wrap: break-word; white-space: normal;">
+              {{ row["posts"] }}
+            </p>
+            <div style="padding-left: 265px;">
+                <form action='/delete_post/{{ row["post_id"] }}' method="post" style="display: inline-block;">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% for row in username %}
+
+        {{ row["username"] }}
+
+    {% endfor %}
+{% endblock %}
+
+{% block main %}
+
+    {% for row in username %}
+
+    <h1>
+        {{ row["username"] }}
+    </h1>
+
+    {% endfor %}
+
+    <form action='/view_friend_profile/{{ id }}' method="post">
+        <div class="mb-3">
+            <button class="btn btn-secondary" type="submit">Remove friend</button>
+        </div>
+    </form>
+
+        <object data="/static/images/{{ picture }}" class="rounded-circle" width="300" height="300">
+            <img src="/static/images/default_profile.jpg" class="rounded-circle" alt="Profile picture" width="300" height="300">
+        </object>
+
+    <p>
+        {% for row in database %}
+
+            <p>Name: {{ row["name"] }}</p>
+            <p>Email: {{ row["email"] }}</p>
+            <p>Bio:</p>
+            <p>{{ row["bio"] }}</p>
+
+        {% endfor %}
+    </p>
+
+    <div style="width:800px; margin:0 auto;">
+      <div class="p-3">
+        <h2 style="text-align:left">Posts</h2>
+          <div class="d-flex p-3 border-bottom"></div>
+
+          {% for row in posts %}
+
+            <div class="d-flex p-3 border-bottom">
+              <a href="/index_profile_link/{{ id }}">
+                <object data="/static/images/{{ picture }}" class="rounded-circle" width="50" height="50">
+                  <img src="/static/images/default_profile.jpg" class="rounded-circle" alt="Profile picture" width="50" height="50">
+                </object>
+              </a>
+              <div class="d-flex w-100 ps-3">
+                <div style="text-align: justify">
+                  <a href="/index_profile_link/{{ id }}">
+                    <h6 class="text-body">
+                        {% for row in username %}
+
+                            {{ row["username"] }}
+
+                        {% endfor %}
+                      <span class="small text-muted font-weight-normal"> • </span>
+                      <span class="small text-muted font-weight-normal">{{ row["date"] }}</span>
+                      <span><i class="fas fa-angle-down float-end"></i></span>
+                    </h6>
+                  </a>
+                  <p style="line-height: 1.2; max-width: 675px; word-wrap: break-word; white-space: normal;">
+                    {{ row["posts"] }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+{% endblock %}

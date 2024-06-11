@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Profile
+{% endblock %}
+
+{% block main %}
+    <h1>Edit Profile</h1>
+
+    <form action="/edit_profile" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="myfile">Select a profle picture:</label>
+            <input type="file" id="myfile" name="picture" accept="image/*"><br><br>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto mb-3" name="name" placeholder="Name" type="text">
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto mb-3" name="email" placeholder="Email address" type="email">
+            <textarea autocomplete="off" autofocus required class="form-control mx-auto w-auto mb-3" name="bio" placeholder="Tell us about yourself" cols="70" rows="3" maxlength="150">{{ bio }}</textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+    <form action="/view_profile">
+        <button class="btn btn-secondary mt-3" type="submit">Cancel</button>
+    </form>
+{% endblock %}
